@@ -5,7 +5,6 @@
   register: airflow_check_admin
   changed_when: false
   when: airflow_version is version( '2.0.0', '>=')
-  no_log: true
 
 - name: Airflow | Create Admin user AUTH_DB (> 2.0)
   command:
@@ -25,7 +24,6 @@
       - "{{ item.role }}"
       - --email
       - "{{ item.email }}"
-  no_log: true
   with_items: "{{ airflow_admin_users }}"
   when:
     - airflow_version is version( '2.0.0', '>=')
@@ -50,7 +48,6 @@
       - "{{ item.role }}"
       - --email
       - "{{ item.email }}"
-  no_log: true
   with_items: "{{ airflow_admin_users }}"
   when:
     - airflow_version is version( '2.0.0', '>=')
